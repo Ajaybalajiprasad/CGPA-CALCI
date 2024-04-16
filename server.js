@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 6969;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
@@ -31,6 +31,25 @@ app.post('/submit', async (req, res) => {
             return res.status(400).json({ error: 'Invalid roll number format' });
         }
 
+        // Determine department based on roll number
+        let department;
+        switch (rollNumber.substr(6, 3)) {
+            case '106':
+                department = 'ECE';
+                break;
+            case '105':
+                department = 'CSE';
+                break;
+            case '104':
+                department = 'EEE';
+                break;
+            case '234':
+                department = 'AIDS';
+                break;
+            default:
+                department = 'Unknown';
+        }
+
         // Check if the roll number already exists in the database
         const { data: existingData, error: existingError } = await supabase
             .from('cgpa_data')
@@ -44,19 +63,15 @@ app.post('/submit', async (req, res) => {
 
         let result;
         if (existingData.length > 0) {
-            // Update the existing record
-            console.log(`${rollNumber} already exists, updating record...`)
+            // Update existing record
             result = await supabase
                 .from('cgpa_data')
-                .upsert(
-                    { username, roll_number: rollNumber, cgpa },
-                    { onConflict: ['roll_number'] }
-                );
+                .update({ username, cgpa, department })
+                .eq('roll_number', rollNumber);
         } else {
-            // Insert a new record
-            console.log(`${rollNumber} does not exist, inserting new record...`)
+            // Insert new record
             result = await supabase.from('cgpa_data').insert([
-                { username, roll_number: rollNumber, cgpa }
+                { username, roll_number: rollNumber, cgpa, department }
             ]);
         }
 
