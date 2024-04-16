@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cgpa.css">
+    <title>Citar CGPA</title>
+</head>
+<body>
+
+    <div class="container">
+        <button onclick="change()">Switch to Cit</button>
+        <h1 class="header">CGPA Calculator </h1>
+
+        <form id="cgpaForm">
+            <label for="username">Name :</label>
+            <input type="text" id="username" required>
+
+            <label for="rollNumber">Roll Number :</label>
+            <input type="text" id="rollNumber" pattern="\d{12}" title="Roll number must contain only numbers and should be 12 digits long" required>
+
+            <label for="matGrade">Mathematics Grade:</label>
+            <select id="matGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <label for="TamGrade">Tamil Grade:</label>
+            <select id="TamGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <label for="engGrade">English Grade:</label>
+            <select id="engGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <label for="phyGrade">Physics Grade:</label>
+            <select id="phyGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="chemGrade">Chemistry Grade:</label>
+            <select id="chemGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <label for="codeGrade">Python Grade:</label>
+            <select id="codeGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <label for="EngGrade">English lab</label>
+            <select id="EngGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <label for="tamGrade">Tamil lab</label>
+            <select id="tamGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <label for="chyGrade">Chemistry/Physics lab</label>
+            <select id="chyGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+            </select>
+
+            <button type="submit">Calculate CGPA</button>
+        </form>
+
+        <div id="result">
+            <h2>CGPA: <span id="cgpa">0.00</span></h2>
+        </div>
+    </div>
+
+<script src="citar.js"></script>
+</body>
+</html>

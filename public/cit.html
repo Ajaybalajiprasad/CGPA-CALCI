@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cgpa.css">
+    <title>CGPA Calculator</title>
+</head>
+
+<body>
+    <div class="container">
+        <button onclick="change()">Switch to Citar</button>
+        <h1 class="header">CGPA Calculator</h1>
+
+        <label for="matGrade">Mathematics Grade:</label>
+        <select id="matGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+        </select>
+
+        <label for="TamGrade">Tamil Grade:</label>
+        <select id="TamGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+        </select>
+
+        <label for="engGrade">English Grade:</label>
+        <select id="engGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+        </select>
+        
+        <label for="phyGrade">Physics Grade:</label>
+        <select id="phyGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+            <option value="5">C</option>
+        </select>
+
+        <label for="chemGrade">Chemistry / AI Grade:</label>
+        <select id="chemGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+        </select>
+
+        <label for="codeGrade">C++/c Grade:</label>
+        <select id="codeGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+        </select>
+        
+        <label for="coreGrade">Core (EG/ADP/EDC) Grade:</label>
+        <select id="coreGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+        </select>
+        
+        <label for="aptGrade">Aptitude Grade:</label>
+        <select id="aptGrade">
+            <option value="10">O</option>
+            <option value="9">A+</option>
+            <option value="8">A</option>
+            <option value="7">B+</option>
+            <option value="6">B</option>
+        </select>
+
+        <button onclick="calculatCGPA()">Calculate CGPA</button>
+        <div id="result">
+            <h2>CGPA: <span id="cgpa">0.00</span></h2>
+        </div>
+    </div>
+
+    <script src="cgpa.js"></script>
+</body>
+
+</html>
+    
