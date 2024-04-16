@@ -5,6 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 6969;
 
 // Middleware
 app.use(bodyParser.json());
@@ -73,4 +74,6 @@ app.post('/submit', async (req, res) => {
 });
 
 // Start the server
-module.exports = app;
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
