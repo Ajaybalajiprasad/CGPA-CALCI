@@ -71,3 +71,6 @@ app.post('/submit', async (req, res) => {
         res.status(500).json({ error: 'An error occurred while submitting CGPA data' });
     }
 });
+
+// Start the server
+module.exports = app;
