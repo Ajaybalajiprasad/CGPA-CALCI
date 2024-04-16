@@ -5,7 +5,6 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
@@ -71,9 +70,4 @@ app.post('/submit', async (req, res) => {
         console.error('Error inserting CGPA data:', error);
         res.status(500).json({ error: 'An error occurred while submitting CGPA data' });
     }
-});
-
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
 });
