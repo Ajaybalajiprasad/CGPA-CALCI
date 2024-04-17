@@ -46,6 +46,13 @@ const form = document.getElementById('cgpaForm');
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  const rollNumber = document.getElementById('rollNumber').value;
+
+  if (rollNumber.substr(0, 6) !== '213223') {
+      window.alert('Roll number must start with "213223"');
+      return;
+  }
+
   // Calculate CGPA before submitting the form
   calculateCGPA();
 
