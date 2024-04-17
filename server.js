@@ -37,13 +37,13 @@ app.post('/submit', async (req, res) => {
             case '106':
                 department = 'ECE';
                 break;
-            case '105':
+            case '104':
                 department = 'CSE';
                 break;
-            case '104':
+            case '105':
                 department = 'EEE';
                 break;
-            case '234':
+            case '243':
                 department = 'AIDS';
                 break;
             default:
