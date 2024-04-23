@@ -44,40 +44,48 @@ function change() {
 const form = document.getElementById('cgpaForm'); 
 
 form.addEventListener('submit', async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const rollNumber = document.getElementById('rollNumber').value;
+    const rollNumber = document.getElementById('rollNumber').value;
 
-  if (rollNumber.substr(0, 6) !== '213223') {
-      window.alert('Roll number must start with "213223"');
-      return;
-  }
+    if (rollNumber.substr(0, 6) !== '213223') {
+        window.alert('Enter valid roll number !');
+        return;
+    }
 
-  // Calculate CGPA before submitting the form
-  calculateCGPA();
+    // Calculate CGPA before submitting the form
+    calculateCGPA();
 
-  // Now retrieve the calculated CGPA
-  const formData = {
-      username: document.getElementById('username').value,
-      rollNumber: document.getElementById('rollNumber').value,
-      cgpa: parseFloat(document.getElementById('cgpa').textContent)
-  };
+    // Now retrieve the calculated CGPA
+    const formData = {
+        username: document.getElementById('username').value,
+        rollNumber: document.getElementById('rollNumber').value,
+        cgpa: parseFloat(document.getElementById('cgpa').textContent)
+    };
 
-  try {
-      const response = await fetch('/submit', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-      });
+    try {
+        const response = await fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
 
-      if (!response.ok) {
-          throw new Error('Failed to submit CGPA data');  
-      }
+        const data = await response.json();
+        
+        if (data.error && data.error === 'Unknown department') {
+            window.alert('Enter valid rollnumber !');
 
-      console.log('CGPA data submitted successfully');
-  } catch (error) {
-      console.error('Error submitting CGPA data:', error);
-  }
+        } else if (!response.ok) {
+                throw new Error('Failed to submit CGPA data');
+        } else {
+        
+            window.alert('CGPA data submitted successfully');
+            console.log('CGPA data submitted successfully');
+        }
+    } catch (error) {
+        console.error('Error submitting CGPA data:', error);
+    }
 });
+

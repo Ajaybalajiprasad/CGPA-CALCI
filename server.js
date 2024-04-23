@@ -49,7 +49,10 @@ app.post('/submit', async (req, res) => {
             default:
                 department = 'Unknown';
         }
-
+        if (department === 'Unknown') {
+            // If department is unknown, send a response indicating the error
+            return res.status(400).json({ error: 'Unknown department' });
+        }
         // Check if the roll number already exists in the database
         const { data: existingData, error: existingError } = await supabase
             .from('cgpa_data')
