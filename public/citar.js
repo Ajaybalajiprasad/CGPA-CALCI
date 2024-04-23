@@ -81,7 +81,7 @@ form.addEventListener('submit', async (event) => {
                 throw new Error('Failed to submit CGPA data');
         } else {
         
-            window.alert('CGPA data submitted successfully');
+            window.alert(`Hey ${formData.username}, your CGPA has been submitted to the HOD successfully!`);
             console.log('CGPA data submitted successfully');
         }
     } catch (error) {
