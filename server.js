@@ -66,12 +66,12 @@ app.post('/submit', async (req, res) => {
         if (existingData.length > 0) {
             // Update existing record
             result = await supabase
-                .from('cgpa_data')
+                .from('cgpa_data_sem2')
                 .update({ username, cgpa, department })
                 .eq('roll_number', rollNumber);
         } else {
             // Insert new record
-            result = await supabase.from('cgpa_data').insert([
+            result = await supabase.from('cgpa_data_sem2').insert([
                 { username, roll_number: rollNumber, cgpa, department }
             ]);
         }
