@@ -20,7 +20,7 @@
             <label for="rollNumber">Roll Number :</label>
             <input type="text" id="rollNumber" pattern="\d{12}" title="Roll number must contain only numbers and should be 12 digits long" required>
 
-            <label for="EieGrade">BE3254 (EIE)</label>
+            <label for="EieGrade" id="EieGradeLabel">BE3254 (EIE)</label>
             <select id="EieGrade">
                 <option value="10">O</option>
                 <option value="9">A+</option>
@@ -30,7 +30,7 @@
                 <option value="5">C</option>
             </select>
 
-            <label for="CaGrade">EC3251 (CA):</label>
+            <label for="CaGrade" id="CaGradeLabel">EC3251 (CA):</label>
             <select id="CaGrade">
                 <option value="10">O</option>
                 <option value="9">A+</option>
@@ -40,7 +40,7 @@
                 <option value="5">C</option>
             </select>
 
-            <label for="CaLabGrade">EC3271 (CA LAB):</label>
+            <label for="CaLabGrade" id="CaLabGradeLabel">EC3271 (CA LAB):</label>
             <select id="CaLabGrade">
                 <option value="10">O</option>
                 <option value="9">A+</option>
@@ -110,8 +110,7 @@
                 <option value="5">C</option>
             </select>   
 
-
-            <label for="PhyGrade">PH3254 (PHY):</label>
+            <label for="PhyGrade" id="PhyGradeLabel">PH3254 (PHY):</label>
             <select id="PhyGrade">
                 <option value="10">O</option>
                 <option value="9">A+</option>
@@ -134,5 +133,21 @@
     </footer>
 
 <script src="citar.js"></script>
+<script>
+    document.getElementById('rollNumber').addEventListener('input', function() {
+        const rollNumber = this.value;
+        if (rollNumber.substr(6, 3) === '104') {
+            document.getElementById('CaGradeLabel').textContent = 'EC3251 (C):';
+            document.getElementById('CaLabGradeLabel').textContent = 'EC3271 (C LAB):';
+            document.getElementById('EieGradeLabel').textContent = 'BE3251 (BEE)';
+            document.getElementById('PhyGradeLabel').textContent = 'PH3256 (PHY)';
+        } else {
+            document.getElementById('CaGradeLabel').textContent = 'EC3251 (CA):';
+            document.getElementById('CaLabGradeLabel').textContent = 'EC3271 (CA LAB):';
+            document.getElementById('EieGradeLabel').textContent = 'BE3254 (EIE)';
+            document.getElementById('PhyGradeLabel').textContent = 'PH3254 (PHY)';
+        }
+    });
+</script>
 </body>
 </html>
