@@ -8,14 +8,13 @@
     <title>Citar CGPA</title>
     <style>
         footer {
-            position: fixed;
-            right: 10px;
-            bottom: 10px;
             background-color: #f1f1f1;
             padding: 10px;
             border-radius: 5px;
             font-size: 12px;
             color: #333;
+            width: 100%;
+            text-align: center;
         }
 
         .note {
@@ -28,8 +27,7 @@
 <body>
 
     <div class="container">
-        <!-- <button onclick="change()">Switch to Cit</button> -->
-        <h1 class="header">CGPA Calculator </h1>
+        <h1 class="header">CGPA Calculator</h1>
 
         <form id="cgpaForm">
             <label for="username">Name :</label>
@@ -38,7 +36,6 @@
             <label for="rollNumber">Roll Number :</label>
             <input type="text" id="rollNumber" pattern="\d{12}" title="Roll number must contain only numbers and should be 12 digits long" required>
 
-            <label for="department">Department :</label>
             <select id="department" required>
                 <option value="ECE">ECE</option>
                 <option value="CSE">CSE</option>
@@ -164,9 +161,11 @@
 
 <script src="citar.js"></script>
 <script>
-        window.onload = function() {
-            alert('If the department is not visible, please clear your browser data from the past 15 minutes.');
-        };
+    // Show a pop-up note when the user refreshes or enters the app
+    window.onload = function() {
+        alert('If the department is not visible, please clear your browser data from the past 15 minutes.');
+    };
+
     document.getElementById('department').addEventListener('change', function() {
         const department = this.value;
         if (department === 'CSE') {
