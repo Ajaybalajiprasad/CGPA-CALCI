@@ -1,91 +1,98 @@
 function calculateCGPA() {
-  let totalCredits = 0;
-  let totalPoints = 0;
-
-  const matCredit = 4; 
-  const phyCredit = 3;
-  const codeCredit = 3; 
-  const chemCredit = 3;
-  const engCredit = 3;
-  const TamCredit = 1;
-  const tamlab = 2;
-  const englab = 1;
-  const chylab = 2;
-
-  const matGrade = parseFloat(document.getElementById('matGrade').value);
-  const phyGrade = parseFloat(document.getElementById('phyGrade').value);
-  const codeGrade = parseFloat(document.getElementById('codeGrade').value);
-  const chemGrade = parseFloat(document.getElementById('chemGrade').value);
-  const engGrade = parseFloat(document.getElementById('engGrade').value);
-  const TamGrade = parseFloat(document.getElementById('TamGrade').value);
-  const tamGrade = parseFloat(document.getElementById('tamGrade').value);
-  const EngGrade = parseFloat(document.getElementById('EngGrade').value);
-  const chyGrade = parseFloat(document.getElementById('chyGrade').value);
-
-  if (isNaN(matGrade) || isNaN(phyGrade) || isNaN(codeGrade) || isNaN(chemGrade) || isNaN(engGrade) || isNaN(TamGrade) || isNaN(tamGrade) || isNaN(EngGrade) || isNaN(chyGrade)){
-      window.alert('Please enter valid grades for all subjects.')
+    let totalCredits = 0;
+    let totalPoints = 0;
+  
+    // Credits for each subject
+    const EieCredit = 3;
+    const CaCredit = 4;
+    const EgCredit = 4;
+    const engCredit = 2;
+    const TamCredit = 1;
+    const MatCredit = 4;
+    const CaLabCredit = 1;
+    const EplCredit = 2;
+    const PhyCredit = 3;
+    const EngLabCredit = 2;
+  
+    // Get grades entered by the user
+    const EieGrade = parseFloat(document.getElementById('EieGrade').value);
+    const CaGrade = parseFloat(document.getElementById('CaGrade').value);
+    const CaLabGrade = parseFloat(document.getElementById('CaLabGrade').value);
+    const EgGrade = parseFloat(document.getElementById('EgGrade').value);
+    const TamGrade = parseFloat(document.getElementById('tamGrade').value);
+    const EplGrade = parseFloat(document.getElementById('EplGrade').value);
+    const EngLabGrade = parseFloat(document.getElementById('engLabGrade').value);
+    const EngGrade = parseFloat(document.getElementById('EngGrade').value);
+    const MatGrade = parseFloat(document.getElementById('MatGrade').value);
+    const PhyGrade = parseFloat(document.getElementById('PhyGrade').value);
+  
+    // Check if any grade is invalid
+    if (isNaN(MatGrade) || isNaN(PhyGrade) || isNaN(EieGrade) || isNaN(CaGrade) || isNaN(EngGrade) || isNaN(TamGrade) || isNaN(CaLabGrade) || isNaN(EplGrade) || isNaN(EngLabGrade) || isNaN(EgGrade)) {
+      window.alert('Please enter valid grades for all subjects.');
       return;
-  }
-
-  const kadan =  tamlab + englab + chylab;
-  const pulli = (tamlab * tamGrade) + (englab * EngGrade) + (chylab * chyGrade);
-  totalCredits = matCredit + phyCredit + codeCredit + chemCredit + engCredit + TamCredit  + kadan;
-  totalPoints = (matCredit * matGrade) + (phyCredit * phyGrade) + (codeCredit * codeGrade) + (chemCredit * chemGrade) + (engCredit * engGrade) + (TamGrade * TamCredit) + pulli;
-
-  const cgpaSpan = document.getElementById('cgpa');
-  const cgpa = (totalPoints / totalCredits).toFixed(2);
-  cgpaSpan.textContent = cgpa;
-}
-
-function change() {
-  window.location.href = "cit.html";
-}
-
-const form = document.getElementById('cgpaForm'); 
-
-form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const rollNumber = document.getElementById('rollNumber').value;
-
-    if (rollNumber.substr(0, 6) !== '213223') {
-        window.alert('Enter valid roll number !');
-        return;
     }
-
+  
+    // Calculate total credits and points
+    totalCredits = EieCredit + CaCredit + EgCredit + engCredit + TamCredit + MatCredit + CaLabCredit + EplCredit + PhyCredit + EngLabCredit;
+    totalPoints = (EieCredit * EieGrade) + (CaCredit * CaGrade) + (CaLabCredit * CaLabGrade) + (EgCredit * EgGrade) + (TamCredit * TamGrade) + (EplCredit * EplGrade) + (EngLabCredit * EngLabGrade) + (engCredit * EngGrade) + (MatCredit * MatGrade) + (PhyCredit * PhyGrade);
+  
+    // Calculate CGPA
+    const cgpa = (totalPoints / totalCredits).toFixed(2);
+  
+    // Display the CGPA
+    const cgpaSpan = document.getElementById('cgpa');
+    cgpaSpan.textContent = cgpa;
+  }
+  
+  function change() {
+    window.location.href = "cit.html";
+  }
+  
+  const form = document.getElementById('cgpaForm'); 
+  
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+  
+    const rollNumber = document.getElementById('rollNumber').value;
+  
+    if (rollNumber.substr(0, 6) !== '213223') {
+      window.alert('Enter valid roll number!');
+      return;
+    }
+  
     // Calculate CGPA before submitting the form
     calculateCGPA();
-
+  
     // Now retrieve the calculated CGPA
     const formData = {
-        username: document.getElementById('username').value,
-        rollNumber: document.getElementById('rollNumber').value,
-        cgpa: parseFloat(document.getElementById('cgpa').textContent)
+      username: document.getElementById('username').value,
+      rollNumber: document.getElementById('rollNumber').value,
+      cgpa: parseFloat(document.getElementById('cgpa').textContent)
     };
-
+  
     try {
-        const response = await fetch('/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        const data = await response.json();
-        
-        if (data.error && data.error === 'Unknown department') {
-            window.alert('Enter valid rollnumber !');
-
-        } else if (!response.ok) {
-                throw new Error('Failed to submit CGPA data');
-        } else {
-        
-            window.alert(`Hey ${formData.username}, your CGPA has been submitted to the HOD successfully!`);
-            console.log('CGPA data submitted successfully');
-        }
+      const response = await fetch('/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      const data = await response.json();
+      
+      if (data.error && data.error === 'Unknown department') {
+        window.alert('Enter valid roll number!');
+  
+      } else if (!response.ok) {
+          throw new Error('Failed to submit CGPA data');
+      } else {
+      
+        window.alert(`Hey ${formData.username}, your CGPA has been submitted to the HOD successfully!`);
+        console.log('CGPA data submitted successfully');
+      }
     } catch (error) {
-        console.error('Error submitting CGPA data:', error);
+      console.error('Error submitting CGPA data:', error);
     }
-});
-
+  });
+  

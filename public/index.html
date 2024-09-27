@@ -1,102 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cgpa.css">
-    <title>CGPA Calculator</title>
+    <title>Citar CGPA</title>
 </head>
-
 <body>
+
     <div class="container">
-        <!--<button onclick="change()">Switch to Citar</button> -->
-        <h1 class="header">CGPA Calculator</h1>
+        <!-- <button onclick="change()">Switch to Cit</button> -->
+        <h1 class="header">CGPA Calculator </h1>
 
-        <label for="TamGrade">Tamil Grade:</label>
-        <select id="TamGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-        </select>
+        <form id="cgpaForm">
+            <label for="username">Name :</label>
+            <input type="text" id="username" required>
 
-        <label for="matGrade">Maths Grade:</label>
-        <select id="matGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-        </select>
+            <label for="rollNumber">Roll Number :</label>
+            <input type="text" id="rollNumber" pattern="\d{12}" title="Roll number must contain only numbers and should be 12 digits long" required>
+
+            <label for="EieGrade">BE3254 (EIE)</label>
+            <select id="EieGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="CaGrade">EC3251 (CA):</label>
+            <select id="CaGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="CaLabGrade">EC3271 (CA LAB):</label>
+            <select id="CaLabGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="EgGrade">GE3251 (EG):</label>
+            <select id="EgGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="tamGrade">GE3252 (TAM)</label>
+            <select id="tamGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="EplGrade">GE3271 (EPL)</label>
+            <select id="EplGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="engLabGrade">GE3272 (ENG LAB):</label>
+            <select id="engLabGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="EngGrade">HS3252 (ENG):</label>
+            <select id="EngGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>
+
+            <label for="MatGrade">MA3251 (MAT):</label>
+            <select id="MatGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>   
 
 
-        <label for="engGrade">English Grade:</label>
-        <select id="engGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-        </select>
+            <label for="PhyGrade">PH3254 (PHY):</label>
+            <select id="PhyGrade">
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5">C</option>
+            </select>   
+            
+            <button type="submit">Calculate CGPA</button>
+        </form>
 
-        <label for="codeGrade">DSU C++/C  Grade:</label>
-        <select id="codeGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-        </select>
-        
-        
-        <label for="phyGrade">DBMS Grade:</label>
-        <select id="phyGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-            <option value="5">C</option>
-        </select>
-
-        <label for="chemGrade">Java Grade:</label>
-        <select id="chemGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-        </select>
-
-
-        <label for="coreGrade">Dsd Grade:</label>
-        <select id="coreGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-        </select>
-        
-        <label for="aptGrade">Aptitude Grade:</label>
-        <select id="aptGrade">
-            <option value="10">O</option>
-            <option value="9">A+</option>
-            <option value="8">A</option>
-            <option value="7">B+</option>
-            <option value="6">B</option>
-        </select>
-
-        <button onclick="calculatCGPA()">Calculate CGPA</button>
         <div id="result">
             <h2>CGPA: <span id="cgpa">0.00</span></h2>
         </div>
     </div>
 
-    <script src="cgpa.js"></script>
+<script src="citar.js"></script>
 </body>
-
 </html>
