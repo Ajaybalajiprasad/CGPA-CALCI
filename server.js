@@ -53,7 +53,7 @@ app.post('/submit', async (req, res) => {
             return res.status(400).json({ error: 'Unknown department' });
         }
         const { data: existingData, error: existingError } = await supabase
-            .from('cgpa_data')
+            .from('cgpa_data_sem2')
             .select('roll_number')
             .eq('roll_number', rollNumber);
 
