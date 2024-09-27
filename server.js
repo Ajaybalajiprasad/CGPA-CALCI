@@ -21,6 +21,31 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Serve staff view page
+app.get('/staff', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'staff.html'));
+});
+
+app.get('/api/students', async (req, res) => {
+    try {
+        console.log("Attempting to fetch student data from Supabase...");
+        const { data, error } = await supabase
+            .from('cgpa_data_sem2')
+            .select('roll_number, username, department, cgpa');
+
+        if (error) {
+            console.error('Error fetching student data:', error.message);
+            return res.status(500).json({ error: 'Failed to fetch student data' });
+        }
+
+        console.log("Successfully fetched student data:", data);
+        res.status(200).json(data);
+    } catch (error) {
+        console.error('Server error in /api/students route:', error);
+        res.status(500).json({ error: 'An error occurred while fetching student data' });
+    }
+});
+
 app.post('/submit', async (req, res) => {
     try {
         const { username, rollNumber, cgpa } = req.body;
@@ -52,6 +77,7 @@ app.post('/submit', async (req, res) => {
         if (department === 'Unknown') {
             return res.status(400).json({ error: 'Unknown department' });
         }
+
         const { data: existingData, error: existingError } = await supabase
             .from('cgpa_data_sem2')
             .select('roll_number')
