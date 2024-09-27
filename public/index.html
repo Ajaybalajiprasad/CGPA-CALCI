@@ -6,6 +6,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="cgpa.css">
     <title>Citar CGPA</title>
+    <style>
+        footer {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: red;
+        }
+    </style>
 </head>
 <body>
 
@@ -134,6 +152,10 @@
         <div id="result">
             <h2>CGPA: <span id="cgpa">0.00</span></h2>
         </div>
+
+        <div class="note">
+            <p>If the department is not visible, please clear your browser data from the past 15 minutes.</p>
+        </div>
     </div>
 
     <footer>
@@ -142,6 +164,9 @@
 
 <script src="citar.js"></script>
 <script>
+        window.onload = function() {
+            alert('If the department is not visible, please clear your browser data from the past 15 minutes.');
+        };
     document.getElementById('department').addEventListener('change', function() {
         const department = this.value;
         if (department === 'CSE') {
