@@ -4,13 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <!-- <title>Student CGPA Overview</title> -->
+    <link rel="stylesheet" href="staff.css">
+    <title>Student CGPA Overview</title>
     <script src="staff.js" defer></script>
 </head>
 <body>
     <div class="container">
         <h1>Student CGPA Overview</h1>
+
+        <!-- Search and Sort Controls -->
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search by Name or Roll Number..." />
+            <select id="sortSelect">
+                <option value="cgpa-asc">Sort by CGPA (Asc)</option>
+                <option value="cgpa-desc">Sort by CGPA (Desc)</option>
+                <option value="name-asc">Sort by Name (A-Z)</option>
+                <option value="name-desc">Sort by Name (Z-A)</option>
+                <option value="department-asc">Sort by Department (A-Z)</option>
+                <option value="department-desc">Sort by Department (Z-A)</option>
+            </select>
+            <button id="sortButton">Sort</button>
+        </div>
+
+        <!-- Student Data Table -->
         <table>
             <thead>
                 <tr>
@@ -21,7 +37,7 @@
                 </tr>
             </thead>
             <tbody id="studentData">
-
+                <!-- Student data will be dynamically inserted here -->
             </tbody>
         </table>
     </div>
