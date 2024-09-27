@@ -7,7 +7,7 @@ body {
 
 .container {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
@@ -18,20 +18,24 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
+    font-size: 1.8rem;
 }
 
 .controls {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
+    gap: 10px; /* Add spacing between items */
 }
 
 #searchInput {
-    flex: 1;
+    flex: 1 1 auto; /* Allow flex grow and shrink */
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    min-width: 180px; /* Minimum width for smaller devices */
 }
 
 #sortSelect, #sortButton {
@@ -39,23 +43,85 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
+    min-width: 120px; /* Minimum width for better visibility */
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    font-size: 0.9rem; /* Smaller font size for mobile */
 }
 
 table th, table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
+    white-space: nowrap; /* Prevent text wrap for table cells */
 }
 
 table th {
     background-color: #f2f2f2;
+    font-weight: bold;
 }
 
 table tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        max-width: 100%;
+        box-shadow: none; /* Remove shadow on smaller devices */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Smaller font size for headings */
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #searchInput {
+        margin-right: 0;
+        margin-bottom: 10px; /* Margin adjustment for mobile */
+        width: 100%; /* Full width input for mobile */
+    }
+
+    #sortSelect, #sortButton {
+        width: 100%; /* Full width for dropdown and button */
+        margin-bottom: 10px; /* Margin adjustment for mobile */
+    }
+
+    table th, table td {
+        padding: 8px;
+        font-size: 0.8rem; /* Smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem; /* Smaller font size for very small devices */
+    }
+
+    #searchInput {
+        font-size: 0.9rem; /* Smaller font size for input */
+    }
+
+    #sortSelect, #sortButton {
+        font-size: 0.9rem; /* Smaller font size for dropdown and button */
+    }
+
+    table th, table td {
+        padding: 6px;
+        font-size: 0.7rem; /* Further reduced font size for small screens */
+    }
+
+    .controls {
+        gap: 5px; /* Reduced gap for very small screens */
+    }
 }
