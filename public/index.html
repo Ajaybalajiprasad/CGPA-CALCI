@@ -20,6 +20,14 @@
             <label for="rollNumber">Roll Number :</label>
             <input type="text" id="rollNumber" pattern="\d{12}" title="Roll number must contain only numbers and should be 12 digits long" required>
 
+            <label for="department">Department :</label>
+            <select id="department" required>
+                <option value="ECE">ECE</option>
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="AIDS">AIDS</option>
+            </select>
+
             <label for="EieGrade" id="EieGradeLabel">BE3254 (EIE)</label>
             <select id="EieGrade">
                 <option value="10">O</option>
@@ -134,9 +142,9 @@
 
 <script src="citar.js"></script>
 <script>
-    document.getElementById('rollNumber').addEventListener('input', function() {
-        const rollNumber = this.value;
-        if (rollNumber.substr(6, 3) === '104') {
+    document.getElementById('department').addEventListener('change', function() {
+        const department = this.value;
+        if (department === 'CSE') {
             document.getElementById('CaGradeLabel').textContent = 'EC3251 (C):';
             document.getElementById('CaLabGradeLabel').textContent = 'EC3271 (C LAB):';
             document.getElementById('EieGradeLabel').textContent = 'BE3251 (BEE)';

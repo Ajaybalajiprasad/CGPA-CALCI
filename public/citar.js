@@ -15,10 +15,10 @@ function calculateCGPA() {
     let EngLabCredit = 2;
 
     // Get roll number to determine department
-    const rollNumber = document.getElementById('rollNumber').value;
+    const department = document.getElementById('department').value;
 
-    // Check if the roll number belongs to CSE department
-    if (rollNumber.substr(6, 3) === '104') {
+    // Check if the department is CSE
+    if (department === 'CSE') {
         CaCredit = 3;
         CaLabCredit = 2;
     }
