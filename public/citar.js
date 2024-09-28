@@ -18,7 +18,7 @@ function calculateCGPA() {
     const department = document.getElementById('department').value;
 
     // Check if the department is CSE
-    if (department === 'CSE') {
+    if (department === 'CSE' || department === 'AIDS') {
         CaCredit = 3;
         CaLabCredit = 2;
     }

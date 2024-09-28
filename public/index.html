@@ -173,7 +173,13 @@
             document.getElementById('CaLabGradeLabel').textContent = 'EC3271 (C LAB):';
             document.getElementById('EieGradeLabel').textContent = 'BE3251 (BEE)';
             document.getElementById('PhyGradeLabel').textContent = 'PH3256 (PHY)';
-        } else {
+        }else if (department === 'AIDS') {
+            document.getElementById('CaGradeLabel').textContent = 'AD3251 (DSA):';
+            document.getElementById('CaLabGradeLabel').textContent = 'AD3271 (DSA LAB):';
+            document.getElementById('EieGradeLabel').textContent = 'BE3251 (BEE)';
+            document.getElementById('PhyGradeLabel').textContent = 'PH3256 (PHY)';
+        }
+         else {
             document.getElementById('CaGradeLabel').textContent = 'EC3251 (CA):';
             document.getElementById('CaLabGradeLabel').textContent = 'EC3271 (CA LAB):';
             document.getElementById('EieGradeLabel').textContent = 'BE3254 (EIE)';
